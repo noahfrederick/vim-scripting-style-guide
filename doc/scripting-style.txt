@@ -1,0 +1,166 @@
+*scripting-style.txt*	For Vim version 7.3	Last change: 2013 July 5
+
+Vim scripting style guide				*scripting-style*
+
+1. Indentation and whitespace	|scripting-style-whitespace|
+2. Inline documentation		|scripting-style-documentation|
+3. Special keys			|scripting-style-keys|
+4. Commands			|scripting-style-commands|
+5. Naming conventions		|scripting-style-naming|
+
+==============================================================================
+1. Indentation and whitespace			*scripting-style-whitespace*
+
+INDENTATION
+
+Code must be indented with two spaces per indent level.  Ex.: >
+    if has("eval")
+      let g:example = 1
+    endif
+<
+
+Line continuation should increase the indent by at least one level.  The
+backslash must be followed by at least one space.  Ex.: >
+    let g:example = [
+      \ 'item1',
+      \ 'item2'
+      \ ]
+<
+
+Use one space plus normal indentation for statements that require it: >
+    autocmd FileType * if g:foo |
+                     \   setlocal nospell |
+		     \ else |
+		     \   setlocal spell |
+		     \ endif
+<
+
+
+BLANK LINES
+
+Blank lines should be used to delineate groups of related statements.
+Function definitions must be preceded and followed by one blank line.
+
+Scripts should avoid consecutive blank lines.
+
+
+TRAILING WHITESPACE
+
+Lines must not end in a whitespace character.  If you wish to, e.g., define a
+map in which the {rhs} ends in a space, use the special <Space> notation
+rather than a literal space character.  Ex.: >
+    nnoremap <Leader>s :saveas<Space>
+<
+
+==============================================================================
+2. Inline documentation				*scripting-style-documentation*
+
+Comments should start with a space followed by a capitalized word.  Ex.: >
+    " This is a comment
+<
+
+Vim settings should be enclosed in single quotes as is done in Vim's help
+documentation.  Ex.: >
+    " Make sure 'paste' is enabled
+<
+
+Likewise, Vim features should be prefixed with a plus sign: >
+    " Abort if +linebreak is missing
+<
+
+
+==============================================================================
+3. Special keys					*scripting-style-keys*
+
+The names of special keys are case insensitive in Vim, however the following
+conventions should be observed.
+
+
+NON-ALPHANUMERIC KEYS
+
+Non-alphanumeric keys should be written in mixed case.  The general rule is
+that they should be written as they appear in Vim's help documentation.
+Examples include: >
+    <Space>
+    <CR>
+    <EOL>
+    <Nop>
+    <Leader>
+    <Plug>
+    <PageUp>
+<
+
+
+CHORDS
+
+Chords should be written with the letter representing the modifier key
+uppercase and any letter key lowercase.  Non-alphanumeric keys included in the
+chord should follow the convention above.  Examples include: >
+    <C-a>
+    <A-b>
+    <C-Space>
+    <S-F4>
+<
+
+Note: This may be controversial, as Vim's documentation prefers <C-A> for
+<C-a>.  The latter was chosen for legibility and to avoid confusion with a
+shifted letter key.  This convention is also used in the book Practical Vim,
+for instance.
+
+
+==============================================================================
+4. Commands					*scripting-style-commands*
+
+GENERAL
+
+The optional leading : must be omitted in scripts.  Ex.: >
+    " Right:
+    function dict.init() dict
+      let self.val = 0
+    endfunction
+
+    " Wrong:
+    :function dict.init() dict
+    :  let self.val = 0
+    :endfunction
+<
+
+
+ABBREVIATIONS
+
+Commands must never be abbreviated in scripts.  Using the unabbreviated forms
+of built-in and user-defined commands promotes consistency and thus improves
+legibility.  Ex.: >
+    " Right:
+    setlocal linebreak
+
+    " Wrong:
+    setl lbr
+<
+
+
+==============================================================================
+5. Naming conventions				*scripting-style-naming*
+
+SCRIPTS
+
+All filenames and directories must use snake case.  Ex.: >
+    my_plugin.vim
+    autoload/my_plugin/my_functions.vim
+<
+
+
+VARIABLES
+
+All normal variables must be written in snake case.  Ex.: >
+    let g:my_var = 1
+<
+
+Note: This does not apply to, e.g., |Funcref| variables, which must start with
+a capital letter.
+
+A variable's scope must always be stated explicitly.  That means that
+function-local and global variables must be prefixed with l: and g:
+respectively even in contexts where the prefixes are optional.
+
+ vim:tw=78:ts=8:ft=help:norl:
