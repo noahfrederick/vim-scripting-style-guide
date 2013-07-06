@@ -139,6 +139,27 @@ legibility.  Ex.: >
 <
 
 
+SETTING OPTIONS
+
+Toggling or inverting options should be done with :set {option}! rather than
+:set inv{option}, since the former is more common and easier to read.  Ex.: >
+    " Right:
+    set number!
+
+    " Wrong:
+    set invnumber
+<
+
+Setting {option} to {value} should be done with the more common '=' rather than
+':'.  Ex.: >
+    " Right:
+    set filetype=vim
+
+    " Wrong:
+    set filetype:vim
+<
+
+
 ==============================================================================
 5. Naming conventions				*scripting-style-naming*
 
