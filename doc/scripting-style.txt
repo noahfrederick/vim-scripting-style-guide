@@ -52,6 +52,26 @@ rather than a literal space character.  Ex.: >
     nnoremap <Leader>s :saveas<Space>
 <
 
+ASSIGNMENT
+
+Variable assignment must include a single space on each side of the assignment
+operator: >
+    " Right:
+    let g:foo = 'bar'
+
+    " Wrong:
+    let g:foo='bar'
+<
+
+Setting option values must NOT include whitespce before the assignment
+operator: >
+    " Right:
+    set laststatus=2
+
+    " Wrong:
+    set laststatus =2
+<
+
 ==============================================================================
 2. Inline documentation				*scripting-style-documentation*
 
