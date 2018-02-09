@@ -1,4 +1,4 @@
-*scripting-style.txt*	For Vim version 7.3	Last change: 2013 July 5
+*scripting-style.txt* An unofficial style guide for Vim scripts
 
 Vim scripting style guide				*scripting-style*
 
