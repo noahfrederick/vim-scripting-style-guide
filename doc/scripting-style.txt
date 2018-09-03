@@ -72,6 +72,17 @@ operator: >
     set laststatus =2
 <
 
+DOT OPERATOR
+
+Use space at each side of a "." when used as string concatenation to
+differentiate from access to a dictionary: >
+    " Right
+    echo dict.member1 . astring
+    
+    " Wrong:
+    echo dict.member1.astring
+<
+
 ==============================================================================
 2. Inline documentation				*scripting-style-documentation*
 
